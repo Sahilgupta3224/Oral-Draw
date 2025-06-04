@@ -1,4 +1,4 @@
-// get user from id
+// /app/api/userByID/route.ts
 
 import User from "@/Models/userModel";
 import { NextRequest, NextResponse } from "next/server";
@@ -8,14 +8,14 @@ export async function GET(request: NextRequest) {
   try {
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
-    console.log(id)
+
     if (!id) {
       return NextResponse.json({ error: "ID is required" }, { status: 400 });
     }
 
     await connect();
 
-    const user = await User.findById(id);
+    const user = await User.findById(id).select("-password"); // remove sensitive fields
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(user, { status: 200 });
   } catch (error) {
-    console.error(error);
+    console.error("[GET USER BY ID ERROR]", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }

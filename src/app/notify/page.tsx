@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 
-
 export default function NotificationsPage() {
     const { isAuthenticated } = useAuth();
     const router = useRouter()

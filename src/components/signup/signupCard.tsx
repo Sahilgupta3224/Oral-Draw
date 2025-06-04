@@ -64,7 +64,7 @@ export default function SignupCard() {
                         <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
                             <Paintbrush className="h-6 w-6" />
                         </div>
-                        PaintApp Inc.
+                        BuilZee Inc.
                     </a>
                     <CardTitle className="text-2xl font-bold">
                         Create an account
